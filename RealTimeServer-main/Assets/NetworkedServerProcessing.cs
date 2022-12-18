@@ -70,6 +70,7 @@ static public class NetworkedServerProcessing
 static public class ClientToServerSignifiers
 {
     public const int BalloonClicked = 1;
+    public const int Disconnection = 2;
 }
 
 static public class ServerToClientSignifiers
