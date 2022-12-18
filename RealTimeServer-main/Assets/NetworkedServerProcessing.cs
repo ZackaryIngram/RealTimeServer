@@ -13,9 +13,9 @@ static public class NetworkedServerProcessing
         string[] csv = msg.Split(',');
         int signifier = int.Parse(csv[0]);
 
-        if (signifier == ClientToServerSignifiers.asd)
+        if (signifier == ClientToServerSignifiers.BalloonClicked)
         {
-
+            gameLogic.BalloonWasClicked(int.Parse(csv[1]));
         }
         // else if (signifier == ClientToServerSignifiers.asd)
         // {
@@ -36,10 +36,12 @@ static public class NetworkedServerProcessing
     static public void ConnectionEvent(int clientConnectionID)
     {
         Debug.Log("New Connection, ID == " + clientConnectionID);
+        gameLogic.AddConnectedClient(clientConnectionID);
     }
     static public void DisconnectionEvent(int clientConnectionID)
     {
         Debug.Log("New Disconnection, ID == " + clientConnectionID);
+        gameLogic.RemoveConnectedClient(clientConnectionID);
     }
 
     #endregion
@@ -67,12 +69,13 @@ static public class NetworkedServerProcessing
 #region Protocol Signifiers
 static public class ClientToServerSignifiers
 {
-    public const int asd = 1;
+    public const int BalloonClicked = 1;
 }
 
 static public class ServerToClientSignifiers
 {
-    public const int asd = 1;
+    public const int BalloonSpawned = 1;
+    public const int BalloonPopped = 1;
 }
 
 #endregion
