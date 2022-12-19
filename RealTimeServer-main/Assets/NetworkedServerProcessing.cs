@@ -17,12 +17,7 @@ static public class NetworkedServerProcessing
         {
             gameLogic.BalloonWasClicked(int.Parse(csv[1]));
         }
-        // else if (signifier == ClientToServerSignifiers.asd)
-        // {
-
-        // }
-
-        //gameLogic.DoSomething();
+  
     }
     static public void SendMessageToClient(string msg, int clientConnectionID)
     {
@@ -76,7 +71,7 @@ static public class ClientToServerSignifiers
 static public class ServerToClientSignifiers
 {
     public const int BalloonSpawned = 1;
-    public const int BalloonPopped = 1;
+    public const int BalloonPopped = 2;
 }
 
 #endregion

@@ -32,10 +32,9 @@ public class GameLogic : MonoBehaviour
 
             BalloonInfo bi = new BalloonInfo(screenPositionXPercent, screenPositionYPercent, lastRefID);
 
-            string msg = bi.Deserialize();
+            string msg = bi.Deserialize(); //Send message that balloon spawned to client 
 
-            foreach (var cid in connectedClientIDs)
-                NetworkedServerProcessing.SendMessageToClient(msg, cid);
+            foreach (var cid in connectedClientIDs) NetworkedServerProcessing.SendMessageToClient(msg, cid);
 
             activeBalloons.AddLast(bi);
         }
